@@ -21,4 +21,9 @@ public class PersonController {
     public void getPersonAndImage(@RequestParam("personid") Long personId, HttpServletResponse response) {
         personService.getPersonAndImage(personId, response);
     }
+
+    @GetMapping()
+    public String text(){
+        return "dude";
+    }
 }
