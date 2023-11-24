@@ -23,8 +23,8 @@ public class Card {
     private CardRank rank;
 
     @ManyToOne
-    @JoinColumn(name = "personID")
-    private Person person;
+    @JoinColumn(name = "paoentryid")
+    private PAOentry PAOentry;
 
     // Getters and setters
 }

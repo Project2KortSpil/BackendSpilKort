@@ -4,16 +4,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.awt.*;
-
 @Entity
-@Table(name = "person")
+@Table(name = "PAOentry")
 @Getter
 @Setter
-public class Person {
+public class PAOentry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long personID;
+    private Long paoentryid;
 
     private String name;
     private String image;

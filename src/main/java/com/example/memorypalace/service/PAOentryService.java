@@ -1,34 +1,42 @@
 package com.example.memorypalace.service;
 
-import com.example.memorypalace.entity.Person;
-import com.example.memorypalace.repository.PersonRepository;
+import com.example.memorypalace.entity.PAOentry;
+import com.example.memorypalace.repository.PAOentryRepository;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PersonService {
+public class PAOentryService {
 
-    private final PersonRepository personRepository;
+    private final PAOentryRepository personRepository;
 
-    public PersonService(PersonRepository personRepository) {
+    public PAOentryService(PAOentryRepository personRepository) {
         this.personRepository = personRepository;
     }
 
     public void getPersonAndImage(Long personId, HttpServletResponse response) {
-        Optional<Person> personOptional = personRepository.findById(personId);
-        personOptional.ifPresent(person -> processPerson(person, response));
+        Optional<com.example.memorypalace.entity.PAOentry> personOptional = personRepository.findById(personId);
+        personOptional.ifPresent(PAOentry -> processPerson(PAOentry, response));
+    }
+    public void getAllPersonsAndImages(HttpServletResponse response) {
+        List<PAOentry> allPersons = personRepository.findAll();
+        for (PAOentry person : allPersons) {
+            processPerson(person, response);
+        }
     }
 
-    private void processPerson(Person person, HttpServletResponse response) {
+
+    private void processPerson(com.example.memorypalace.entity.PAOentry person, HttpServletResponse response) {
         try {
             response.setContentType("text/html");
             PrintWriter writer = response.getWriter();
 
-            writer.println("Person ID: " + person.getPersonID());
+            writer.println("Person ID: " + person.getPaoentryid());
             writer.println("Name: " + person.getName());
             writer.println("Action: " + person.getAction());
             writer.println("Object: " + person.getObject());
