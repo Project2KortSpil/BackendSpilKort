@@ -26,5 +26,7 @@ public class Card {
     @JoinColumn(name = "paoentryid")
     private PAOentry PAOentry;
 
+    private String card;
+
     // Getters and setters
 }

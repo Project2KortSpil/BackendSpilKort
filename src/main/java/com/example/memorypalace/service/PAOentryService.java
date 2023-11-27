@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PAOentryService {
@@ -29,6 +30,27 @@ public class PAOentryService {
             processPerson(person, response);
         }
     }
+    public List<String> getAllPersonNames() {
+        List<PAOentry> allPersons = personRepository.findAll();
+        return allPersons.stream()
+                .map(PAOentry::getName)
+                .collect(Collectors.toList());
+    }
+    public List<String> getAllPersonAction() {
+        List<PAOentry> allPersons = personRepository.findAll();
+        return allPersons.stream()
+                .map(PAOentry::getAction)
+                .collect(Collectors.toList());
+    }
+    public List<String> getAllPersonObjects() {
+        List<PAOentry> allPersons = personRepository.findAll();
+        return allPersons.stream()
+                .map(PAOentry::getObject)
+                .collect(Collectors.toList());
+    }
+
+
+
 
 
     private void processPerson(com.example.memorypalace.entity.PAOentry person, HttpServletResponse response) {
