@@ -27,8 +27,8 @@ public class PAOentryController {
     }
 
     @GetMapping()
-    public String text(){
-        return "dude";
+    public String basicOutlayText(){
+        return "Test";
     }
     @GetMapping("/all")
     public void getAllPersonsAndImages(HttpServletResponse response) {

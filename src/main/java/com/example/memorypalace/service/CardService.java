@@ -2,7 +2,6 @@ package com.example.memorypalace.service;
 
 
 import com.example.memorypalace.entity.Card;
-import com.example.memorypalace.entity.PAOentry;
 import com.example.memorypalace.repository.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
